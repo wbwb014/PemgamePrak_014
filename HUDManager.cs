@@ -15,6 +15,8 @@ public class HUDManager : MonoBehaviour
     private float input_z;
     private bool isRun = false;
     private bool isJump = false;
+    [SerializeField] GameObject pauseMenu;
+    public static bool GameIsPaused = false;
 
     public Text time;
     
@@ -35,6 +37,7 @@ public class HUDManager : MonoBehaviour
         isJump = player.GetComponent<Move>().isJump;
         EnergyDrain();
         UpdateEnergy();
+        ShowPauseMenu();
     }
 
     private void EnergyDrain(){
@@ -55,6 +58,28 @@ public class HUDManager : MonoBehaviour
     private void UpdateEnergy(){
         float ratio = energy / maxEnergy;
         currentEnergy.rectTransform.localScale = new Vector3(ratio, 1,1);
+    }
+
+    private void ShowPauseMenu(){
+        if(Input.GetKeyDown(KeyCode.P)){
+            if(GameIsPaused){
+                Resume();
+            }else{
+                Pause();
+            }
+        }
+    }
+    public void Resume(){
+        pauseMenu.SetActive(false);
+        GameIsPaused = false;
+        Time.timeScale = 1f;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+    public void Pause(){
+        pauseMenu.SetActive(true);
+        GameIsPaused = true;
+        Time.timeScale = 0f;
+        Cursor.lockState = CursorLockMode.Confined;
     }
     
 }
