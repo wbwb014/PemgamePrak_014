@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class AnimationFunction : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    [SerializeField]MenuButtonController menuButtonController;
+    // Start is called before the first frame update
+    
+    void PlaySound(AudioClip whichSound){
+        menuButtonController.audioSource.PlayOneShot(whichSound);
     }
 }
