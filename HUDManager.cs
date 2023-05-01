@@ -100,6 +100,8 @@ public class HUDManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Confined;
     }
     
-
+    public void SaveGame(){
+        
+    }
     
 }
