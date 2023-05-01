@@ -6,7 +6,12 @@ using UnityEngine.UI;
 public class HUDManager : MonoBehaviour
 {
     public Image currentEnergy;
+    public Image currentHealth;
     private GameObject player;
+
+    private float health = 100;
+    private float maxHealth = 100;
+
     private float energy = 200;
     private float maxEnergy = 200;
     public float kecepatan;
@@ -38,6 +43,14 @@ public class HUDManager : MonoBehaviour
         EnergyDrain();
         UpdateEnergy();
         ShowPauseMenu();
+        HealthDrain();
+        UpdateHealth();
+    }
+
+    private void HealthDrain(){
+        if(Input.GetKeyDown(KeyCode.E)){
+            health -= 10;
+        }
     }
 
     private void EnergyDrain(){
@@ -56,8 +69,13 @@ public class HUDManager : MonoBehaviour
     }
     
     private void UpdateEnergy(){
-        float ratio = energy / maxEnergy;
-        currentEnergy.rectTransform.localScale = new Vector3(ratio, 1,1);
+        float ratioEnergy = energy / maxEnergy;
+        currentEnergy.rectTransform.localScale = new Vector3(ratioEnergy, 1,1);
+    }
+
+    private void UpdateHealth(){
+        float ratioHealth = health / maxHealth;
+        currentHealth.rectTransform.localScale = new Vector3(ratioHealth, 1, 1);
     }
 
     private void ShowPauseMenu(){
@@ -81,5 +99,7 @@ public class HUDManager : MonoBehaviour
         Time.timeScale = 0f;
         Cursor.lockState = CursorLockMode.Confined;
     }
+    
+
     
 }
