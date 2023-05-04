@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class HUDManager : MonoBehaviour
 {
+    public Player playerInstance;
     public Image currentEnergy;
     public Image currentHealth;
     private GameObject player;
@@ -64,7 +65,7 @@ public class HUDManager : MonoBehaviour
             }
         }
         if(isJump == true){
-            energy -= 40 * (Time.deltaTime * 3);
+            energy -= 25 * (Time.deltaTime * 3);
         }
     }
     
@@ -101,7 +102,8 @@ public class HUDManager : MonoBehaviour
     }
     
     public void SaveGame(){
-        
+        SaveSystem.SavePlayer(playerInstance);
+
     }
     
 }

@@ -7,12 +7,26 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if(SceneLoader.loadStatus){
+            LoadPlayer();
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    private void LoadPlayer(){
+        PlayerData data = SaveSystem.LoadPLayer();
+
+        Vector3 position;
+        position.x = data.position[0];
+        position.y = data.position[1];
+        position.z = data.position[2];
+
+        EnviroSky.instance.SetTime(1,1,data.time[0],data.time[1],data.time[2]);
+        transform.position = position;
     }
 }

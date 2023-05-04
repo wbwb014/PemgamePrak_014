@@ -9,7 +9,7 @@ public class Move : MonoBehaviour
     public float z;
     private CharacterController controller;
 
-    private float gravitasi = 20f;
+    private float gravitasi = 15f;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private float groundDistance = 0.4f;
     [SerializeField] private LayerMask groundMask;
