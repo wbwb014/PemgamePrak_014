@@ -28,5 +28,6 @@ public class Player : MonoBehaviour
 
         EnviroSky.instance.SetTime(1,1,data.time[0],data.time[1],data.time[2]);
         transform.position = position;
+        Debug.Log("Loaded");
     }
 }

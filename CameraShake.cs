@@ -37,5 +37,11 @@ public class CameraShake : MonoBehaviour
         if(other.tag == "Obstacle"){
             shouldShake = true;
         }
+        
+    }
+    private void OnTriggerStay(Collider other) {
+        if(other.tag == "Fire"){
+            shouldShake = true;
+        }
     }
 }

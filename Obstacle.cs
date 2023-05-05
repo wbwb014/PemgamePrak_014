@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Obstacle : MonoBehaviour
-{
+{   
+    [SerializeField] private bool isFire;
     private GameObject player;
     // Start is called before the first frame update
     void Start()
@@ -18,8 +19,9 @@ public class Obstacle : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other) {
-        if(player){
+        if(player & isFire == false){
             Destroy(gameObject);
         }
+        
     }
 }

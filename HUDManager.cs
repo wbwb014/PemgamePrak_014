@@ -7,12 +7,11 @@ public class HUDManager : MonoBehaviour
 {
     public Player playerInstance;
     public Image currentEnergy;
-    public Image currentHealth;
+    
     private GameObject player;
-
     private float health = 100;
     private float maxHealth = 100;
-
+    public Image currentHealth;
     private float energy = 200;
     private float maxEnergy = 200;
     public float kecepatan;
@@ -36,6 +35,7 @@ public class HUDManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        health = player.GetComponent<HealthSystem>().healthPlayer;
         kecepatan = player.GetComponent<Move>().kecepatan;
         input_x = player.GetComponent<Move>().x;
         input_z = player.GetComponent<Move>().z;
@@ -44,7 +44,7 @@ public class HUDManager : MonoBehaviour
         EnergyDrain();
         UpdateEnergy();
         ShowPauseMenu();
-        HealthDrain();
+        // HealthDrain();
         UpdateHealth();
     }
 
@@ -103,7 +103,7 @@ public class HUDManager : MonoBehaviour
     
     public void SaveGame(){
         SaveSystem.SavePlayer(playerInstance);
-
+        Debug.Log("Saved");
     }
     
 }
