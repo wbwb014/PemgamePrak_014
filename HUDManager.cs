@@ -23,6 +23,10 @@ public class HUDManager : MonoBehaviour
     [SerializeField] GameObject pauseMenu;
     public static bool GameIsPaused = false;
 
+    [SerializeField] GameObject GameOverMenu;
+    [SerializeField] GameObject information;
+    string info; 
+
     public Text time;
     
     // Start is called before the first frame update
@@ -46,6 +50,7 @@ public class HUDManager : MonoBehaviour
         ShowPauseMenu();
         // HealthDrain();
         UpdateHealth();
+        // gameOver();
     }
 
     private void HealthDrain(){
@@ -105,5 +110,16 @@ public class HUDManager : MonoBehaviour
         SaveSystem.SavePlayer(playerInstance);
         Debug.Log("Saved");
     }
-    
+
+    private void gameOver(){
+        if(health < 1){
+            // dead
+            GameOverMenu.SetActive(true);
+            GameIsPaused = true;
+            Time.timeScale = 0f;
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
+            
+        }
+    }    
 }

@@ -25,7 +25,9 @@ public class HealthSystem : MonoBehaviour
         if(other.tag == "Obstacle"){
             healthPlayer -= 20f;
         }
-        
+        if(other.tag == "Enemy"){
+            healthPlayer -= 25f;
+        }
     }
     private void OnTriggerStay(Collider other) {
         if(other.tag == "Fire"){
